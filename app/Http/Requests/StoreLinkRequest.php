@@ -24,6 +24,7 @@ class StoreLinkRequest extends FormRequest
         return [
             'link' => ['required', 'url'],
             'name' => ['required', 'min:3'],
+            'user_id' => ['interger'],
         ];
     }
 }

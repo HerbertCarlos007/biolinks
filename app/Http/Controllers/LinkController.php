@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreLinkRequest;
 use App\Http\Requests\UpdateLinkRequest;
 use App\Models\Link;
+use Termwind\Components\Li;
 
 class LinkController extends Controller
 {
@@ -21,7 +22,7 @@ class LinkController extends Controller
      */
     public function store(StoreLinkRequest $request)
     {
-        Link::create($request->validated());
+        auth()->user()->links()->create($request->validated());
 
         return to_route('dashboard');
     }
