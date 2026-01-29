@@ -20,6 +20,7 @@ class Link extends Model
         'link',
         'name',
         'user_id',
+        'sort'
     ];
 
     public function user(): BelongsTo
