@@ -49,6 +49,6 @@ class User extends Authenticatable
 
     public function links(): HasMany
     {
-        return $this->hasMany(Link::class);
+        return $this->hasMany(Link::class, 'user_id');
     }
 }
