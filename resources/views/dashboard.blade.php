@@ -34,13 +34,16 @@
 
                 <a href="{{route('links.edit', $link)}}">{{$link->id}} - {{$link->name}}</a>
 
-                <form action="{{route('links.destroy', $link)}}" method="post"
-                      onsubmit="return confirm('Tem certeza?')">
-                    @csrf
-                    @method('DELETE')
 
-                    <button>Deletar</button>
-                </form>
+{{--                @can('destroy', $link)--}}
+                    <form action="{{route('links.destroy', $link)}}" method="post"
+                          onsubmit="return confirm('Tem certeza?')">
+                        @csrf
+                        @method('DELETE')
+
+                        <button>Deletar</button>
+                    </form>
+{{--                @endcan--}}
             </li>
         @endforeach
     </ul>

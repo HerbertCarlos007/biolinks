@@ -33,7 +33,7 @@ class LinkController extends Controller
      */
     public function edit(Link $link)
     {
-
+        $this->authorize('atualizar', $link);
         return view('links.edit', compact('link'));
     }
 
@@ -42,6 +42,8 @@ class LinkController extends Controller
      */
     public function update(UpdateLinkRequest $request, Link $link)
     {
+        $this->authorize('atualizar', $link);
+
         $link->update($request->validated());
 
         return to_route('dashboard')
@@ -53,6 +55,8 @@ class LinkController extends Controller
      */
     public function destroy(Link $link)
     {
+        $this->authorize('atualizar', $link);
+
         $link->delete();
         return to_route('dashboard')
             ->with('message', 'deletado com sucesso!');
@@ -60,12 +64,16 @@ class LinkController extends Controller
 
     public function up(Link $link)
     {
+        $this->authorize('atualizar', $link);
+
         $link->moveUp();
         return back();
     }
 
     public function down(Link $link)
     {
+        $this->authorize('atualizar', $link);
+
         $link->moveDown();
         return back();
     }
